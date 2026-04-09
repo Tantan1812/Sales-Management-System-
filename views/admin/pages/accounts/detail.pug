@@ -1,0 +1,34 @@
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+
+block main 
+  if (role.permissions.includes("accounts_detail"))
+    +alert-error("5000")
+    +alert-success("5000")
+    .container
+      h1 Thông tin tài khoản
+      .account-details
+        p
+          strong Họ và tên: 
+          | #{account.fullName}
+        p
+          strong Email: 
+          | #{account.email}
+        p
+          strong Số điện thoại: 
+          | #{account.phone}
+        p
+          strong Trạng thái: 
+          | #{account.status}
+        p
+          strong Vai trò: 
+          | #{roles.find(item => item.id === account.role_id).title}
+        p
+          strong Avatar: 
+          img(src=account.avatar alt="Avatar" class="avatar-img")
+
+        a(
+          href=`${prefixAdmin}/accounts/edit/${account._id}`
+          class="btn btn-warning"
+          ) Chỉnh sửa
+  script(src="/admin/js/product.js")

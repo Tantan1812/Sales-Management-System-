@@ -1,0 +1,54 @@
+//- Note: .container <=> div.container, nó cũng tương tự cho các thẻ bên dưới
+include ../mixins/sub-menu.pug
+header.header 
+    .container 
+      .row.align-items-center 
+        .col-3 
+          .inner-logo 
+            a(href="/")
+              img.logo-img(src=settingGeneral.logo, alt="Logo") 
+        .col-5
+            form(
+                action="/search"
+                method="GET"
+            )
+                div(class="form-group d-flex mb-0")
+                    input(
+                        type="text"
+                        placeholder="Nhập từ khóa..."
+                        class="form-control"
+                        name="keyword"
+                        value=keyword
+                    )
+                    button(
+                        type="submit"
+                        class="btn btn-primary"
+                    ) <i class="fa-solid fa-magnifying-glass"></i>
+        .col-4 
+          .inner-menu 
+            ul 
+              li 
+                a(href="/") <i class="fa-solid fa-house"></i> Trang chủ
+              li(class="sub-menu")
+                -const pathProduct = "/products"
+                a(href=pathProduct) <i class="fa-solid fa-box-open"></i> Sản phẩm 
+                if (layoutProductCategory)
+                  +sub-menu(layoutProductCategory, pathProduct)
+                
+              li 
+                a(href="/cart") <i class="fa-solid fa-cart-shopping"></i> Giỏ hàng (#{miniCart ? miniCart.totalQuatity : "0"})
+              
+              if(user)
+                li 
+                  a(href="/users/friends") <i class="fa-solid fa-user-group"></i> Bạn bè
+                li 
+                  a(href="/rooms-chat") <i class="fa-solid fa-users-rectangle"></i> Phòng chat
+                li 
+                  a(href="/user/info") <i class="fa-solid fa-user"></i> #{user.fullName}
+                li 
+                  a(href="/user/logout") <i class="fa-solid fa-right-from-bracket"></i> Đăng xuất
+              else
+                li 
+                  a(href="/user/login") <i class="fa-solid fa-right-to-bracket"></i> Đăng nhập
+                li 
+                  a(href="/user/register") <i class="fa-solid fa-user-plus"></i> Đăng ký

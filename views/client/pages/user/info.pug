@@ -1,0 +1,31 @@
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+include ../../mixins/box-head.pug
+
+block main
+    +alert-error(5000)
+    +alert-success(5000)
+    .container.my-4
+        .row.justify-content-center
+            .col-md-6
+                +box-head("Thông tin tài khoản")
+                .card.shadow-lg.rounded-3.p-4
+                    .card-body.text-center
+                        h4.text-primary.mb-3 Thông tin người dùng
+                        img.rounded-circle.mb-3(
+                            src=user.avatar ? user.avatar : "/images/user-avatar.svg.png", 
+                            alt="Avatar", 
+                            width="100", height="100"
+                        )
+                        .mb-3
+                            strong Họ và tên: 
+                            span.text-muted.ms-2 #{user.fullName}
+                        .mb-3
+                            strong Email: 
+                            span.text-muted.ms-2 #{user.email}
+                        .mb-3
+                            - var badgeClass = user.status === 'active' ? 'badge-success' : 'badge-danger'
+                            strong Trạng thái: 
+                            span.ms-2.badge(class=badgeClass) #{user.status}
+                        hr
+                        a.btn.btn-outline-primary(href="/user/edit") ✏️ Chỉnh sửa thông tin

@@ -1,0 +1,56 @@
+extends ../../layouts/default.pug
+
+block main
+    h1.text-center.mb-4 Trang tổng quan
+
+    .row.g-4
+        .col-12
+            .card.shadow-sm.border-0.rounded-3
+                .card-header.bg-primary.text-white.text-uppercase.font-weight-bold Thông tin tài khoản
+                .card-body.text-center
+                    if (user.avatar)
+                        img(
+                            src=user.avatar
+                            class="rounded-circle mb-3 border border-3 border-primary"
+                            style="height: 100px; width: 100px; object-fit: cover;"
+                        )
+                    if (user.fullName)
+                        p.mb-2 Họ tên: <b class="text-dark">#{user.fullName}</b>
+                    if (user.email)
+                        p.mb-2 Email: <b class="text-dark">#{user.email}</b>
+                    if (user.phone)
+                        p.mb-2 Số điện thoại: <b class="text-dark">#{user.phone}</b>
+                    if (role.title)
+                        p.mb-0 Phân quyền: <b class="text-dark">#{role.title}</b>
+
+        .col-md-6
+            .card.shadow-sm.border-0.rounded-3
+                .card-header.bg-secondary.text-white.text-uppercase.font-weight-bold Danh mục sản phẩm
+                .card-body
+                    p.mb-2 Số lượng: <b class="text-dark">#{statistic.categoryProduct.total}</b>
+                    p.mb-2.text-success Hoạt động: <b>#{statistic.categoryProduct.active}</b>
+                    p.mb-0.text-danger Dừng hoạt động: <b>#{statistic.categoryProduct.inactive}</b>
+
+        .col-md-6
+            .card.shadow-sm.border-0.rounded-3
+                .card-header.bg-secondary.text-white.text-uppercase.font-weight-bold Sản phẩm
+                .card-body
+                    p.mb-2 Số lượng: <b class="text-dark">#{statistic.product.total}</b>
+                    p.mb-2.text-success Hoạt động: <b>#{statistic.product.active}</b>
+                    p.mb-0.text-danger Dừng hoạt động: <b>#{statistic.product.inactive}</b>
+
+        .col-md-6
+            .card.shadow-sm.border-0.rounded-3
+                .card-header.bg-secondary.text-white.text-uppercase.font-weight-bold Tài khoản admin
+                .card-body
+                    p.mb-2 Số lượng: <b class="text-dark">#{statistic.account.total}</b>
+                    p.mb-2.text-success Hoạt động: <b>#{statistic.account.active}</b>
+                    p.mb-0.text-danger Dừng hoạt động: <b>#{statistic.account.inactive}</b>
+
+        .col-md-6
+            .card.shadow-sm.border-0.rounded-3
+                .card-header.bg-secondary.text-white.text-uppercase.font-weight-bold Tài khoản client
+                .card-body
+                    p.mb-2 Số lượng: <b class="text-dark">#{statistic.user.total}</b>
+                    p.mb-2.text-success Hoạt động: <b>#{statistic.user.active}</b>
+                    p.mb-0.text-danger Dừng hoạt động: <b>#{statistic.user.inactive}</b>

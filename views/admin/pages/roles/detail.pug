@@ -1,0 +1,18 @@
+extend ../../layouts/default.pug
+
+block main
+    if (role.permissions.includes("roles_detail"))
+        h1(class="mb-4") Chi tiết nhóm quyền
+        
+        div(class="form-group")
+            label(for="title") Tiêu đề
+            p(class="form-control") #{records.title}  
+
+        div(class="form-group")
+            label(for="desc") Mô tả
+            p(class="form-control") #{records.description}  
+
+        a(
+            href=`${prefixAdmin}/roles/edit/${records._id}`
+            class="btn btn-warning"
+        ) Chỉnh sửa

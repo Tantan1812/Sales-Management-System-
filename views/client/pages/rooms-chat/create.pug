@@ -1,0 +1,49 @@
+extends ../../layouts/default.pug
+include ../../mixins/box-head.pug
+
+block main
+    .container.my-4.p-4.shadow.rounded.bg-white
+        .row.mb-3
+            .col-12
+                +box-head("Tạo phòng")
+
+        .row
+            .col-md-8.mx-auto
+                form(
+                    action="/rooms-chat/create" 
+                    method="POST"
+                    class="p-4 border rounded shadow-sm bg-light"
+                )
+                    div(class="form-group mb-3")
+                        label(for="title" class="fw-bold") Tiêu đề
+                        input(
+                            type="text"
+                            class="form-control rounded-pill px-3"
+                            id="title"
+                            name="title"
+                            placeholder="Nhập tiêu đề phòng..."
+                            required
+                        )
+                    
+                    div(class="form-group mb-3")
+                        label(class="fw-bold") Thêm thành viên
+                        .d-flex.flex-column.gap-2
+                        each friend in friendList
+                            div(class="form-check")
+                                input(
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    value=friend.user_id
+                                    id=`user-${friend.user_id}`
+                                    name="usersId"
+                                )
+                                label(
+                                    class="form-check-label"
+                                    for=`user-${friend.user_id}`
+                                ) #{friend.infoFriend.fullName}
+
+                    div(class="form-group mt-4")
+                        button(
+                            type="submit"
+                            class="btn btn-primary w-100 fw-bold py-2 rounded-pill"
+                        ) <i class="fa-solid fa-plus"></i> Tạo phòng

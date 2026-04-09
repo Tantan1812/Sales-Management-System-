@@ -1,0 +1,75 @@
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+include ../../mixins/box-head.pug
+
+block main 
+    +alert-error(5000)
+    +alert-success(5000)
+    .container.my-4
+        .row.justify-content-center
+            .col-md-6
+                +box-head('Chỉnh sửa tài khoản') 
+
+                form(
+                    action=`/user/edit?_method=PATCH`
+                    method="POST"
+                    enctype="multipart/form-data"
+                    class="card shadow-lg p-4 rounded-3"
+                ) 
+                    .form-group.mb-3
+                        label(for="fullName").fw-bold Họ tên *
+                        input(
+                            type="text"
+                            class="form-control"
+                            id="fullName"
+                            name="fullName"
+                            required
+                            value=user.fullName
+                        ) 
+
+                    .form-group.mb-3
+                        label(for="email").fw-bold Email *
+                        input(
+                            type="email"
+                            class="form-control"
+                            id="email"
+                            name="email"
+                            required
+                            value=user.email
+                        )
+
+                    .form-group.mb-3
+                        label(for="password").fw-bold Mật khẩu *
+                        input(
+                            type="password"
+                            class="form-control"
+                            id="password"
+                            name="password"
+                            required
+                            value=user.password
+                        )
+
+                    .form-group.mb-3.text-center(upload-image)
+                        label(for="avatar").fw-bold Avatar
+                        .d-flex.flex-column.align-items-center
+                            img.rounded-circle.border.mt-2(
+                                src=user.avatar ? user.avatar : "/images/user-avatar.svg.png",
+                                alt="Avatar"
+                                width="80"
+                                height="80"
+                                upload-image-preview
+                            )
+                            input.mt-2(
+                                type="file"
+                                class="form-control-file"
+                                id="avatar"
+                                name="avatar"
+                                accept="image/*"
+                                upload-image-input
+                            ) 
+
+                    .text-center
+                        button(
+                            type="submit"
+                            class="btn btn-primary px-4"
+                        ) Cập nhật
