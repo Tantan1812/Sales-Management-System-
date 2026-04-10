@@ -54,10 +54,7 @@ MVC là một mô hình kiến trúc phần mềm phổ biến giúp phân tách
 - **Ứng dụng client:** [https://sale-management-website.vercel.app/](https://sale-management-website.vercel.app/)  
 - **Ứng dụung admin:** [https://sale-management-website.vercel.app/](https://sale-management-website.vercel.app/admin/dashboard)  
 
-Note: với úng dụng admin bạn đăng nhập tài khoản sau dưới quyền quản lý nội dung
-```bash
-email: truongtienanh16@gmail.com
-password: 12345
+
 ```
 ---
 
@@ -65,7 +62,7 @@ password: 12345
 
 ### 1. **Clone Repository**  
 ```bash
-git clone https://github.com/trgtanhh04/Sales-management-system.git
+git clone https://github.com/Tantan1812/Sales-management-system.git
 cd Sales-management-system
 ```
 
