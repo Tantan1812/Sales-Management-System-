@@ -9,8 +9,8 @@ Một **hệ thống quản lý bán hàng trên nền tảng web** được xâ
 ## **Tính Năng**  
 
 <p align="center">
-  <img src="https://github.com/trgtanhh04/Sales-management-system/blob/main/admin.png" width="48%" alt="Bảng điều khiển quản trị">
-  <img src="https://github.com/trgtanhh04/Sales-management-system/blob/main/client.png" width="48%" alt="Giao diện khách hàng">
+  <img src="https://github.com/Tantan1812/Sales-management-system/blob/main/admin.png" width="48%" alt="Bảng điều khiển quản trị">
+  <img src="https://github.com/Tantan1812/Sales-management-system/blob/main/client.png" width="48%" alt="Giao diện khách hàng">
 </p>
 
 ### **Admin**  
